@@ -14,6 +14,8 @@ You can use it to enforce Test-Driven Development with the built-in rule, block 
   <img src="docs/assets/probity-tdd-demo.gif" alt="Probity enforcing TDD in a live agent session" width="1200">
 </p>
 
+Probity is featured on the [Modern Software Engineering channel](https://www.youtube.com/watch?v=bDLdZIAjH5Y), where Emily Bache and Nizar Selander discuss what TDD looks like when an agent writes the code. A separate [Q&A with factor10's Jimmy Nilsson](https://factor10.com/news/using-probity-to-enforce-tdd-guardrails-for-ai-coding-agents-q-and-a-with-nizar-selander/) covers using Probity on real projects, and links the full kata run.
+
 ## How it works
 
 When a rule is broken, the agent sees a reason and a path forward:
@@ -72,6 +74,12 @@ Probity reads each agent's session transcript directly, so there are no per-fram
 
 **Does Probity need its own API key or subscription?**
 No. AI-validated rules use each vendor's official SDK and reuse whatever authentication your agent already has, so Probity doesn't require its own access or billing.
+
+**Does this cost extra tokens?**
+AI-validated rules add a turn each time they check an action, so yes, some. Working in small TDD steps adds turns of its own, with or without Probity. Pattern-based rules add none.
+
+**Does enforcing TDD with an agent guarantee good design?**
+Not on its own. Probity keeps the agent on track: a failing test before the code, the minimum to pass it, refactoring on green. That removes a lot of handholding and prompt fatigue. The shape the implementation and the tests take is still yours to steer.
 
 **I'm already using TDD Guard. Should I switch?**
 Yes. Probity handles refactors and multi-step edits more reliably, is safe with parallel sessions, and supports more agents. See [Migrating from TDD Guard](docs/migrating-from-tdd-guard.md).
